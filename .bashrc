@@ -35,7 +35,7 @@ PROMPT_COMMAND=set_bash_prompt
 
 set_bash_prompt() {
     local prompt_symbol="@"
-    
+
     # Détecter si l'utilisateur est root
     if [ "$(id -u)" -eq 0 ]; then
         # root en rouge
@@ -44,7 +44,7 @@ set_bash_prompt() {
         # Nom d'utilisateur en bleu
         user_host="\[\033[1;34m\](\u$prompt_symbol\h)\[\033[0m\]"
     fi
-    
+
     # Afficher le groupe de l'utilisateur
     local group="\[\033[1;32m\]\$(id -gn)\[\033[0m\]"  # Affiche ton groupe
     local path="\[\033[1;32m\]\w\[\033[0m\]"  # Affiche le répertoire courant
@@ -88,16 +88,12 @@ fi
 shopt -s dotglob
 
 # Quelques alias utiles
-alias '..'='cd ..'
-alias '....'='cd ../..'
 alias ll='ls -lh'
 alias la='ls -A'
 alias l='ls -CF'
 alias cls='clear'
 alias gcl="git clone"
-alias mini='~/mini-moulinette/mini-moul.sh'
-alias lpush="cat ~/leyzen/code/git/token && git push"
- 
+
 # Nettoyer les fichiers temporaires de manière efficace
 alias clean_tmp='rm -rf ~/.cache/* /tmp/*'
 
@@ -152,5 +148,3 @@ bind '"\e[F": end-of-line'          # End
 if [ -f /etc/bash_command_not_found ]; then
     . /etc/bash_command_not_found
 fi
-
-export PATH="$PATH:/bin"
